@@ -1,17 +1,14 @@
 package de.markiewb.netbeans.plugin.common.action;
 
-import de.markiewb.netbeans.plugin.formatandsavemodule.FormatAndSaveAction;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
-import org.apache.commons.lang.ObjectUtils;
 import org.netbeans.core.options.keymap.api.ShortcutAction;
 import org.netbeans.core.options.keymap.spi.KeymapManager;
 import org.openide.nodes.Node;
 import org.openide.util.Lookup;
-import org.openide.windows.InputOutput;
 import org.openide.windows.TopComponent;
 
 /*
@@ -22,6 +19,13 @@ import org.openide.windows.TopComponent;
  * @author Bender
  */
 public class ActionUtils {
+
+    private static String toStringWithDefault(Object value, String fallback) {
+        if (null == value) {
+            return fallback;
+        }
+        return value.toString();
+    }
 
     private List<Action> getActionsFromNode() {
         List<Action> result = new ArrayList<Action>();
@@ -90,8 +94,6 @@ public class ActionUtils {
         if (null == o1) {
             return "";
         }
-        return ObjectUtils.defaultIfNull(o1.getValue(Action.NAME), "").toString();
+        return toStringWithDefault(o1.getValue(Action.NAME), "");
     }
-
-
 }
