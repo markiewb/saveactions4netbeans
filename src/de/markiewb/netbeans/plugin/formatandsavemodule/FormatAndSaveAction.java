@@ -26,9 +26,9 @@ id = "de.markiewb.netbeans.plugin.formatandsavemodule.FormatAndSaveAction")
 @ActionRegistration(displayName = "#CTL_FormatAndSaveAction")
 @ActionReferences({
     @ActionReference(path = "Menu/File", position = 1550),
-    @ActionReference(path = "Shortcuts", name = "D-S")
+    @ActionReference(path = "Shortcuts", name = "DOS-S")
 })
-@Messages("CTL_FormatAndSaveAction=Save with save actions")
+@Messages("CTL_FormatAndSaveAction=Save &with save actions")
 public final class FormatAndSaveAction implements ActionListener {
 
     private Action findAction(List<Action> actions, String searchName) {
