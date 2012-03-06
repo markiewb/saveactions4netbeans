@@ -25,7 +25,7 @@ import org.openide.windows.*;
 id = "de.markiewb.netbeans.plugin.formatandsavemodule.FormatAndSaveAction")
 @ActionRegistration(displayName = "#CTL_FormatAndSaveAction")
 @ActionReferences({
-    @ActionReference(path = "Menu/File", position = 2550, separatorAfter = 2575),
+    @ActionReference(path = "Menu/File", position = 1550),
     @ActionReference(path = "Shortcuts", name = "D-S")
 })
 @Messages("CTL_FormatAndSaveAction=Save with save actions")
