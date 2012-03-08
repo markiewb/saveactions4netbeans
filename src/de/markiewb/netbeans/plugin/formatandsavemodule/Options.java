@@ -24,7 +24,6 @@ public class Options {
     public String formatAction;
     public String saveAction;
 
-    
     public void load() {
         Preferences pref = NbPreferences.forModule(FormatAndSaveAction.class);
         fiximportActionEnabled = pref.getBoolean(FIXIMPORTACTIONENABLED, true);

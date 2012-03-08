@@ -4,24 +4,17 @@
  */
 package de.markiewb.netbeans.plugin.formatandsavemodule;
 
-import de.markiewb.netbeans.plugin.common.action.ActionComparator;
 import de.markiewb.netbeans.plugin.common.action.ActionUtils;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Field;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Action;
-import org.netbeans.core.options.keymap.api.ShortcutAction;
-import org.netbeans.core.options.keymap.spi.KeymapManager;
-import org.openide.awt.*;
-import org.openide.nodes.Node;
-import org.openide.util.Lookup;
+import org.openide.awt.ActionID;
+import org.openide.awt.ActionReference;
+import org.openide.awt.ActionReferences;
+import org.openide.awt.ActionRegistration;
 import org.openide.util.NbBundle.Messages;
-import org.openide.util.NbPreferences;
-import org.openide.windows.*;
 
 @ActionID(category = "File",
 id = "de.markiewb.netbeans.plugin.formatandsavemodule.FormatAndSaveAction")
@@ -64,7 +57,7 @@ public final class FormatAndSaveAction implements ActionListener {
     private List<String> readOptions() {
         Options options = new Options();
         options.load();
-        
+
         List<String> list = new ArrayList<String>();
         if (options.fiximportActionEnabled) {
             list.add(options.fiximportAction);
