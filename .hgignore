@@ -1,0 +1,8 @@
+\.orig$
+\.orig\..*$
+\.chg\..*$
+\.rej$
+\.conflict\~$
+^src/rebel\.xml$
+^build\.xml$
+^nbproject/project\.properties$
