@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 import javax.swing.Action;
 import org.netbeans.core.options.keymap.api.ShortcutAction;
 import org.netbeans.core.options.keymap.spi.KeymapManager;
@@ -19,6 +20,7 @@ import org.openide.awt.*;
 import org.openide.nodes.Node;
 import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.NbPreferences;
 import org.openide.windows.*;
 
 @ActionID(category = "File",
@@ -44,9 +46,10 @@ public final class FormatAndSaveAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        List<Action> allActions = new ActionUtils().getAllActions();
+        List<String> list = readOptions();
 
-        List<String> list = Arrays.asList("fix-imports", "format", "&Save");
+
+        List<Action> allActions = new ActionUtils().getAllActions();
 
         //search for the actions
         List<Action> actions = new ArrayList<Action>();
@@ -56,5 +59,20 @@ public final class FormatAndSaveAction implements ActionListener {
 
         //execute the actions
         new MultiAction(actions).run();
+    }
+
+    private List<String> readOptions() {
+        Options options = new Options();
+        options.load();
+        
+        List<String> list = new ArrayList<String>();
+        if (options.fiximportActionEnabled) {
+            list.add(options.fiximportAction);
+        }
+        if (options.formatActionEnabled) {
+            list.add(options.formatAction);
+        }
+        list.add(options.saveAction);
+        return list;
     }
 }
