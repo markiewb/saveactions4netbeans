@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.markiewb.netbeans.plugin.formatandsavemodule;
+package de.markiewb.netbeans.plugin.savewithsaveactions;
 
 final class SaveactionsPanel extends javax.swing.JPanel {
 
@@ -32,6 +32,7 @@ final class SaveactionsPanel extends javax.swing.JPanel {
         txtSave = new javax.swing.JTextField();
         btnResetToDefaults = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnShowAllActions = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(SaveactionsPanel.class, "SaveactionsPanel.jPanel1.border.title"))); // NOI18N
 
@@ -97,6 +98,13 @@ final class SaveactionsPanel extends javax.swing.JPanel {
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(SaveactionsPanel.class, "SaveactionsPanel.jLabel1.text")); // NOI18N
 
+        org.openide.awt.Mnemonics.setLocalizedText(btnShowAllActions, org.openide.util.NbBundle.getMessage(SaveactionsPanel.class, "SaveactionsPanel.btnShowAllActions.text")); // NOI18N
+        btnShowAllActions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowAllActionsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,15 +114,9 @@ final class SaveactionsPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnShowAllActions)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnResetToDefaults))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNote2)
-                            .addComponent(labelNote1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbFixImports)
@@ -124,7 +126,15 @@ final class SaveactionsPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSave)
                             .addComponent(txtFixImports)
-                            .addComponent(txtFormat))))
+                            .addComponent(txtFormat)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(jLabel1))
+                            .addComponent(labelNote2)
+                            .addComponent(labelNote1))
+                        .addGap(0, 101, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,7 +159,9 @@ final class SaveactionsPanel extends javax.swing.JPanel {
                     .addComponent(cbSave)
                     .addComponent(txtSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(btnResetToDefaults))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnResetToDefaults)
+                    .addComponent(btnShowAllActions)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -206,6 +218,12 @@ final class SaveactionsPanel extends javax.swing.JPanel {
     private void cbFormatStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cbFormatStateChanged
         txtFormat.setEnabled(cbFormat.isSelected());
     }//GEN-LAST:event_cbFormatStateChanged
+
+    private void btnShowAllActionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionsActionPerformed
+
+        //execute action
+        new ShowAllActionsAction().actionPerformed(evt);
+    }//GEN-LAST:event_btnShowAllActionsActionPerformed
     private Options options = null;
 
     void load() {
@@ -231,6 +249,7 @@ final class SaveactionsPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnResetToDefaults;
+    private javax.swing.JButton btnShowAllActions;
     private javax.swing.JCheckBox cbFixImports;
     private javax.swing.JCheckBox cbFormat;
     private javax.swing.JCheckBox cbSave;

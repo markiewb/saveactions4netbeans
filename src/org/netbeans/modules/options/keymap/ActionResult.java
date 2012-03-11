@@ -38,6 +38,7 @@
  * Contributor(s):
  * 
  * Portions Copyrighted 2008 Sun Microsystems, Inc.
+ * Portions Copyrighted 2012 markiewb.
  */
 package org.netbeans.modules.options.keymap;
 
@@ -57,8 +58,8 @@ import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
 
 /**
- * Copied from "Keymap Options module". Originally located at org.netbeans.modules.options.keymap.ActionsSearchProvider
- * as a private class.
+ * Copied from "Keymap Options module". Code is from {@code netbeans-7.1-201112071828-src\options.keymap\src\org\netbeans\modules\options\keymap\ActionsSearchProvider.java},
+ * but was a private class.
  *
  * @author Jan Becicka, Dafe Simonek
  */

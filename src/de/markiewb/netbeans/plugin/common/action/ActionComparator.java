@@ -1,15 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package de.markiewb.netbeans.plugin.common.action;
 
 import java.util.Comparator;
 import javax.swing.Action;
 
 /**
+ * Comparator which compares {@link Action} by name.
  *
- * @author Bender
+ * @author markiewb
  */
 public class ActionComparator implements Comparator<Action> {
 

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-OpenIDE-Module: formatandsavenetbeans
-OpenIDE-Module-Localizing-Bundle: formatandsavenetbeans/Bundle.properties
+OpenIDE-Module: savewithsaveactionsmodule
+OpenIDE-Module-Localizing-Bundle: Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0
 

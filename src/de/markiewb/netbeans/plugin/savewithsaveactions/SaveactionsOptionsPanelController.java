@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.markiewb.netbeans.plugin.formatandsavemodule;
+package de.markiewb.netbeans.plugin.savewithsaveactions;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -13,9 +13,10 @@ import org.openide.util.Lookup;
 
 @OptionsPanelController.SubRegistration(location = "Editor",
 displayName = "#AdvancedOption_DisplayName_Saveactions",
+id = "de.markiewb.netbeans.plugin.savewithsaveactions.SaveactionsOptionsPanelController",
 keywords = "#AdvancedOption_Keywords_Saveactions",
-keywordsCategory = "Editor/Saveactions")
-@org.openide.util.NbBundle.Messages({"AdvancedOption_DisplayName_Saveactions=Save actions", "AdvancedOption_Keywords_Saveactions=keywords"})
+keywordsCategory = "Editor/de.markiewb.netbeans.plugin.savewithsaveactions.SaveactionsOptionsPanelController")
+@org.openide.util.NbBundle.Messages({"AdvancedOption_DisplayName_Saveactions=Save actions", "AdvancedOption_Keywords_Saveactions=Configure the save actions"})
 public final class SaveactionsOptionsPanelController extends OptionsPanelController {
 
     private SaveactionsPanel panel;

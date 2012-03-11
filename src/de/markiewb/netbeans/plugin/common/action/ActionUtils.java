@@ -1,7 +1,9 @@
 package de.markiewb.netbeans.plugin.common.action;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
@@ -11,22 +13,33 @@ import org.openide.nodes.Node;
 import org.openide.util.Lookup;
 import org.openide.windows.TopComponent;
 
-/*
- * To change this template, choose Tools | Templates and open the template in the editor.
- */
 /**
+ * Helper function to work with {@link Action}s.
  *
- * @author Bender
+ * @author markiewb
  */
 public class ActionUtils {
 
-    private static String toStringWithDefault(Object value, String fallback) {
-        if (null == value) {
+    /**
+     * Return the {@code toString}-content of the given object. This method is NPE-safe. When the object is {@code null}
+     * then the fallback value will be returned.
+     *
+     * @param value
+     * @param fallback
+     * @return
+     */
+    private static String toStringWithDefault(Object object, String fallback) {
+        if (null == object) {
             return fallback;
         }
-        return value.toString();
+        return object.toString();
     }
 
+    /**
+     * Gets the action from the available actions from the currently actived nodes. Code is from {@code netbeans-7.1-201112071828-src\options.keymap\src\org\netbeans\modules\options\keymap\ActionsSearchProvider.java}
+     *
+     * @return
+     */
     private List<Action> getActionsFromNode() {
         List<Action> result = new ArrayList<Action>();
 
@@ -44,33 +57,48 @@ public class ActionUtils {
         return result;
     }
 
-    private Action getActionDelegate(final ShortcutAction sa) {
-        Class clazz = sa.getClass();
+    /**
+     * Gets the actions from the {@link ShortcutAction}. Code is from {@code netbeans-7.1-201112071828-src\options.keymap\src\org\netbeans\modules\options\keymap\ActionsSearchProvider.java}
+     *
+     * @param shortcutAction
+     * @return
+     */
+    private Action getActionDelegate(final ShortcutAction shortcutAction) {
+        Class clazz = shortcutAction.getClass();
         Field f;
         try {
             f = clazz.getDeclaredField("action");
             f.setAccessible(true);
-            Action action = (Action) f.get(sa);
+            Action action = (Action) f.get(shortcutAction);
             return action;
         } catch (Throwable thr) {
             if (thr instanceof ThreadDeath) {
                 throw (ThreadDeath) thr;
             } // complain
-            Logger.getLogger(getClass().getName()).log(Level.FINE, "Some problem getting action " + sa.getDisplayName(), thr);
+            Logger.getLogger(getClass().getName()).log(Level.FINE, "Some problem getting action " + shortcutAction.getDisplayName(), thr);
         }
         return null;
     }
 
+    /**
+     * Get all available actions. <p>See {@link ActionUtils#getActionsFromKeyMap()} and {@link ActionUtils#getActionsFromNode()
+     * }.</p>
+     *
+     * @return
+     */
     public List<Action> getAllActions() {
-        //http://netbeans-org.1045718.n5.nabble.com/Invoking-Action-programatically-td3042933.html#a3042936
-        //http://netbeans-org.1045718.n5.nabble.com/invoke-action-from-code-td3026143.html
-        //http://netbeans-org.1045718.n5.nabble.com/Finding-action-by-id-td5006931.html
+
         List<Action> allActions = new ArrayList<Action>();
         allActions.addAll(getActionsFromNode());
         allActions.addAll(getActionsFromKeyMap());
         return allActions;
     }
 
+    /**
+     * Gets the actions from all available {@link KeymapManager}. Code is from {@code netbeans-7.1-201112071828-src\options.keymap\src\org\netbeans\modules\options\keymap\ActionsSearchProvider.java}
+     *
+     * @return
+     */
     private List<Action> getActionsFromKeyMap() {
         List<Action> result = new ArrayList<Action>();
 
@@ -90,10 +118,16 @@ public class ActionUtils {
         return result;
     }
 
-    public static String getActionName(Action o1) {
-        if (null == o1) {
+    /**
+     * Get the name of the {@link Action}. When the action is {@code null} then an empty string will be returned.
+     *
+     * @param action
+     * @return
+     */
+    public static String getActionName(Action action) {
+        if (null == action) {
             return "";
         }
-        return toStringWithDefault(o1.getValue(Action.NAME), "");
+        return toStringWithDefault(action.getValue(Action.NAME), "");
     }
 }

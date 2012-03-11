@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package de.markiewb.netbeans.plugin.showallactions;
+package de.markiewb.netbeans.plugin.savewithsaveactions;
 
 import de.markiewb.netbeans.plugin.common.action.ActionComparator;
 import de.markiewb.netbeans.plugin.common.action.ActionUtils;
@@ -14,22 +10,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Action;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle.Messages;
 import org.openide.windows.IOProvider;
 import org.openide.windows.InputOutput;
 
-@ActionID(category = "Window",
-id = "de.markiewb.netbeans.plugin.showallactions.ShowAllActions")
-@ActionRegistration(displayName = "#CTL_ShowAllActions")
-@ActionReferences({
-    @ActionReference(path = "Menu/Window/Other", position = 1205)
-})
-@Messages("CTL_ShowAllActions=Show all actions")
-public final class ShowAllActions implements ActionListener {
+/**
+ * Shows all actions in an {@code OutputWindow}.
+ *
+ * @author markiewb
+ */
+public class ShowAllActionsAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
