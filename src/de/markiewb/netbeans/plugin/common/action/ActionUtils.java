@@ -96,7 +96,9 @@ public class ActionUtils {
 
     /**
      * Gets the actions from all available {@link KeymapManager}. Code is from {@code netbeans-7.1-201112071828-src\options.keymap\src\org\netbeans\modules\options\keymap\ActionsSearchProvider.java}
-     *
+     * <p>Note: This code requires an implementation dependency to {@code Keymap Options}-module (which is a ugly hack), because the API is not
+     * published nor this module is a friendly module.</p>
+     * 
      * @return
      */
     private List<Action> getActionsFromKeyMap() {
